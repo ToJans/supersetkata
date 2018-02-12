@@ -50,15 +50,21 @@ namespace supersets
 
         internal SuperSet<T> AddSetWithElements(params T[] elements)
         {
-            var hs = new HashSet<T>(elements);
-            this.Add(hs);
-            if (elements.Length > 1)
+            foreach(var el in elements)
             {
-                foreach (var el in elements)
+                var existingsets = this.ToArray();
+                foreach(var existingset in existingsets)
                 {
-                    var set = new HashSet<T>();
-                    set.Add(el);
-                    this.Add(set);
+                    if (!existingset.Contains(el))
+                    {
+                        var newSet = new HashSet<T>();
+                        foreach (var val in existingset)
+                        {
+                            newSet.Add(val);
+                        }
+                        newSet.Add(el);
+                        this.Add(newSet);
+                    }
                 }
             }
             return this;

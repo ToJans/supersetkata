@@ -31,14 +31,14 @@ namespace test
         public void emptySetAndFilledSetAreNotEqual()
         {
             var leftSet = new SuperSet<int>();
-            var rightSet = new SuperSet<int>().AddSetWithElements(1,2);
+            var rightSet = new SuperSet<int>().AddSetWithElements(1, 2);
             Assert.AreNotEqual(leftSet, rightSet);
         }
 
         [TestMethod]
         public void twoFilledSetsWithSameElementsAreEqual()
         {
-            var leftSet = new SuperSet<int>().AddSetWithElements(1,2);
+            var leftSet = new SuperSet<int>().AddSetWithElements(1, 2);
             var rightSet = new SuperSet<int>().AddSetWithElements(1, 2);
             Assert.AreEqual(leftSet, rightSet);
         }
@@ -76,7 +76,6 @@ namespace test
             setEquals(actual, expected);
         }
 
-        [Ignore]
         [TestMethod]
         public void superSetsOfBiggerSet()
         {
@@ -90,7 +89,9 @@ namespace test
             expected.Add(setWithElements(2, 3));
             expected.Add(setWithElements(1, 2, 3));
 
-            //setEquals(expected, SetUtil.superSets(setWithElements(1, 2, 3)));
+            var actual = new SuperSet<int>().AddSetWithElements(1, 2, 3);
+
+            setEquals(actual, expected);
         }
 
         [Ignore]
