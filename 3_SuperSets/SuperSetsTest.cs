@@ -31,23 +31,23 @@ namespace test
         public void emptySetAndFilledSetAreNotEqual()
         {
             var leftSet = new SuperSet<int>();
-            var rightSet = new SuperSet<int>().AddSetWithElements(1, 2);
+            var rightSet = new SuperSet<int>(1, 2);
             Assert.AreNotEqual(leftSet, rightSet);
         }
 
         [TestMethod]
         public void twoFilledSetsWithSameElementsAreEqual()
         {
-            var leftSet = new SuperSet<int>().AddSetWithElements(1, 2);
-            var rightSet = new SuperSet<int>().AddSetWithElements(1, 2);
+            var leftSet = new SuperSet<int>(1, 2);
+            var rightSet = new SuperSet<int>(1, 2);
             Assert.AreEqual(leftSet, rightSet);
         }
 
         [TestMethod]
         public void twoFilledSetsWithDifferentElementsAreNotEqual()
         {
-            var leftSet = new SuperSet<int>().AddSetWithElements(1, 2);
-            var rightSet = new SuperSet<int>().AddSetWithElements(1, 3);
+            var leftSet = new SuperSet<int>(1, 2);
+            var rightSet = new SuperSet<int>(1, 3);
             Assert.AreNotEqual(leftSet, rightSet);
         }
 
@@ -57,8 +57,7 @@ namespace test
             HashSet<HashSet<int>> expected = new HashSet<HashSet<int>>();
             expected.Add(setWithElements());
             expected.Add(setWithElements(1));
-            var actual = new SuperSet<int>()
-                .AddSetWithElements(1);
+            var actual = new SuperSet<int>(1);
             setEquals(actual, expected);
         }
 
@@ -71,7 +70,7 @@ namespace test
             expected.Add(setWithElements(2));
             expected.Add(setWithElements(1, 2));
 
-            var actual = new SuperSet<int>().AddSetWithElements(1, 2);
+            var actual = new SuperSet<int>(1, 2);
 
             setEquals(actual, expected);
         }
@@ -89,7 +88,7 @@ namespace test
             expected.Add(setWithElements(2, 3));
             expected.Add(setWithElements(1, 2, 3));
 
-            var actual = new SuperSet<int>().AddSetWithElements(1, 2, 3);
+            var actual = new SuperSet<int>(1, 2, 3);
 
             setEquals(actual, expected);
         }
@@ -115,7 +114,7 @@ namespace test
             expected.Add(setWithElements(2, 3, 4));
             expected.Add(setWithElements(1, 2, 3, 4));
 
-            var actual = new SuperSet<int>().AddSetWithElements(1, 2, 3, 4);
+            var actual = new SuperSet<int>(1, 2, 3, 4);
 
             setEquals(actual, expected);
 

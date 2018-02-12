@@ -7,9 +7,9 @@ namespace supersets
 {
     public class SuperSet<T> : HashSet<HashSet<T>>
     {
-        public SuperSet()
+        public SuperSet(params T[] elements)
         {
-            this.Add(new HashSet<T>());
+            this.AddSetWithElements(elements);
         }
 
         public static bool Equals(SuperSet<T> a, SuperSet<T> b)
@@ -48,9 +48,10 @@ namespace supersets
             return hashCode;
         }
 
-        internal SuperSet<T> AddSetWithElements(params T[] elements)
+        private SuperSet<T> AddSetWithElements(params T[] elements)
         {
-            foreach(var el in elements)
+            this.Add(new HashSet<T>());
+            foreach (var el in elements)
             {
                 var existingsets = this.ToArray();
                 foreach(var existingset in existingsets)
