@@ -26,6 +26,13 @@ namespace test
             Assert.AreEqual(leftSet, rightSet);
         }
 
+        [TestMethod]
+        public void emptySetAndFilledSetAreNotEqual()
+        {
+            var leftSet = new SuperSet<int>();
+            var rightSet = new SuperSet<int>().AddSetWithElements(1,2);
+            Assert.AreNotEqual(leftSet, rightSet);
+        }
 
         [TestMethod]
         public void superSetsOfSingleElement()
