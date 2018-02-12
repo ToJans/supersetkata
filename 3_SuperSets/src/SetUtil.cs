@@ -13,7 +13,9 @@ namespace supersets
 
         public static bool Equals(SuperSet<T> a, SuperSet<T> b)
         {
-            return true;
+            if (Object.ReferenceEquals(a, b)) { return true; }
+            if (null == a || null == b) { return false; }
+            return a.Count == b.Count;
         }
 
         public override bool Equals(object obj)
@@ -23,7 +25,7 @@ namespace supersets
 
         public static bool operator ==(SuperSet<T> a, SuperSet<T> b)
         {
-            return SuperSet<T>.Equals(a,b);
+            return SuperSet<T>.Equals(a, b);
         }
         public static bool operator !=(SuperSet<T> a, SuperSet<T> b)
         {
@@ -32,7 +34,16 @@ namespace supersets
 
         public override int GetHashCode()
         {
-            return 12345;
+            var hashCode = 123456 ^ this.Count * 97;
+            foreach (var set in this)
+            {
+                hashCode ^= set.Count * 13;
+                foreach (var el in this)
+                {
+                    hashCode ^= el.GetHashCode();
+                }
+            }
+            return hashCode;
         }
 
         internal SuperSet<T> AddSetWithElements(params T[] elements)
