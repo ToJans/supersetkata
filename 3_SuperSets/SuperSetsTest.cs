@@ -13,19 +13,19 @@ namespace test
         [TestMethod]
         public void superSetsOfEmptySet()
         {
-            var leftEmptySet = new SuperSet<int>();
-            var rightEmptySet = new SuperSet<int>();
-            Assert.AreEqual(leftEmptySet, rightEmptySet);
+            var expected = new HashSet<HashSet<int>>();
+            var actual = new SuperSet<int>();
+            setEquals(actual, expected);
         }
 
-        [Ignore]
         [TestMethod]
         public void superSetsOfSingleElement()
         {
             HashSet<HashSet<int>> expected = new HashSet<HashSet<int>>();
-            expected.Add(setWithElements());
             expected.Add(setWithElements(1));
-            setEquals(expected, SetUtil.superSets(setWithElements(1)));
+            var actual = new SuperSet<int>()
+                .AddSetWithElements(1);
+            setEquals(actual, expected);
         }
 
         [Ignore]
@@ -37,7 +37,7 @@ namespace test
             expected.Add(setWithElements(1));
             expected.Add(setWithElements(2));
             expected.Add(setWithElements(1, 2));
-            setEquals(expected, SetUtil.superSets(setWithElements(1, 2)));
+            //setEquals(expected, SetUtil.superSets(setWithElements(1, 2)));
         }
 
         [Ignore]
@@ -54,7 +54,7 @@ namespace test
             expected.Add(setWithElements(2, 3));
             expected.Add(setWithElements(1, 2, 3));
 
-            setEquals(expected, SetUtil.superSets(setWithElements(1, 2, 3)));
+            //setEquals(expected, SetUtil.superSets(setWithElements(1, 2, 3)));
         }
 
         [Ignore]
@@ -79,7 +79,7 @@ namespace test
             expected.Add(setWithElements(2, 3, 4));
             expected.Add(setWithElements(1, 2, 3, 4));
 
-            setEquals(expected, SetUtil.superSets(setWithElements(1, 2, 3, 4)));
+            //setEquals(expected, SetUtil.superSets(setWithElements(1, 2, 3, 4)));
         }
 
         private HashSet<int> setWithElements(params int[] elements)
@@ -92,7 +92,7 @@ namespace test
             return result;
         }
 
-        private void setEquals(HashSet<HashSet<int>> expected, HashSet<HashSet<int>> actual)
+        private void setEquals(SuperSet<int> actual, HashSet<HashSet<int>> expected)
         {
             Assert.AreEqual(expected.Count, actual.Count);
             foreach (HashSet<int> set in expected)
