@@ -18,7 +18,8 @@ git clone https://github.com/ToJans/supersetkata.git
 
 The idea is to implement a solution for a problem based on the tests:
 
-- You start out with all tests disabled. Build the solution. Eveything should work
+- Open the solution you cloned during installation in Visual Studio
+- You start out with all tests disabled. Build the solution. Everything should work
 - Remove the `ignore` attribute on the first test
    ```C#
     public class SuperSetsTest
@@ -35,4 +36,4 @@ The idea is to implement a solution for a problem based on the tests:
 
 ## Example implementation
 
-If you are stuck, you can check my implementation under the branch "example"
+If you are stuck, you can check an example implementation [here](https://github.com/ToJans/supersetkata/tree/example).
