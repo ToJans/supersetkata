@@ -14,6 +14,7 @@ namespace test
         public void superSetsOfEmptySet()
         {
             var expected = new HashSet<HashSet<int>>();
+            expected.Add(new HashSet<int>());
             var actual = new SuperSet<int>();
             setEquals(actual, expected);
         }
@@ -54,13 +55,13 @@ namespace test
         public void superSetsOfSingleElement()
         {
             HashSet<HashSet<int>> expected = new HashSet<HashSet<int>>();
+            expected.Add(setWithElements());
             expected.Add(setWithElements(1));
             var actual = new SuperSet<int>()
                 .AddSetWithElements(1);
             setEquals(actual, expected);
         }
 
-        [Ignore]
         [TestMethod]
         public void superSetsOfSimpleSet()
         {
@@ -69,7 +70,10 @@ namespace test
             expected.Add(setWithElements(1));
             expected.Add(setWithElements(2));
             expected.Add(setWithElements(1, 2));
-            //setEquals(expected, SetUtil.superSets(setWithElements(1, 2)));
+
+            var actual = new SuperSet<int>().AddSetWithElements(1, 2);
+
+            setEquals(actual, expected);
         }
 
         [Ignore]

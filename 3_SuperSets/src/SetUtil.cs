@@ -9,6 +9,7 @@ namespace supersets
     {
         public SuperSet()
         {
+            this.Add(new HashSet<T>());
         }
 
         public static bool Equals(SuperSet<T> a, SuperSet<T> b)
@@ -51,6 +52,15 @@ namespace supersets
         {
             var hs = new HashSet<T>(elements);
             this.Add(hs);
+            if (elements.Length > 1)
+            {
+                foreach (var el in elements)
+                {
+                    var set = new HashSet<T>();
+                    set.Add(el);
+                    this.Add(set);
+                }
+            }
             return this;
         }
     }
