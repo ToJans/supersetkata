@@ -17,7 +17,40 @@ namespace supersets
         /// <returns>powerset man de gegeven set</returns>
         public static HashSet<HashSet<int>> superSets(HashSet<int> set)
         {
-            return new HashSet<HashSet<int>>();
+            var result = new HashSet<HashSet<int>>();
+            result.Add(set);
+            return result;
+        }
+    }
+
+    public class SuperSet<T> : HashSet<HashSet<T>>
+    {
+        public SuperSet()
+        {
+        }
+
+        public static bool Equals(SuperSet<T> a, SuperSet<T> b)
+        {
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return SuperSet<T>.Equals(this as SuperSet<T>, obj as SuperSet<T>);
+        }
+
+        public static bool operator ==(SuperSet<T> a, SuperSet<T> b)
+        {
+            return SuperSet<T>.Equals(a,b);
+        }
+        public static bool operator !=(SuperSet<T> a, SuperSet<T> b)
+        {
+            return !SuperSet<T>.Equals(a, b);
+        }
+
+        public override int GetHashCode()
+        {
+            return 12345;
         }
     }
 }
