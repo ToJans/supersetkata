@@ -35,6 +35,14 @@ namespace test
         }
 
         [TestMethod]
+        public void twoFilledSetsWithSameElementsAreEqual()
+        {
+            var leftSet = new SuperSet<int>().AddSetWithElements(1,2);
+            var rightSet = new SuperSet<int>().AddSetWithElements(1, 2);
+            Assert.AreEqual(leftSet, rightSet);
+        }
+
+        [TestMethod]
         public void superSetsOfSingleElement()
         {
             HashSet<HashSet<int>> expected = new HashSet<HashSet<int>>();
