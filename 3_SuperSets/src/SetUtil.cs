@@ -17,7 +17,7 @@ namespace supersets
         /// <returns>powerset man de gegeven set</returns>
         public static HashSet<HashSet<int>> superSets(HashSet<int> set)
         {
-            throw new NotImplementedException("Implement me!");
+            return new HashSet<HashSet<int>>();
         }
     }
 }

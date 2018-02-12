@@ -10,7 +10,6 @@ namespace test
     [TestClass]
     public class SuperSetsTest
     {
-        [Ignore]
         [TestMethod]
         public void superSetsOfEmptySet() {
 		    setEquals(new HashSet<HashSet<int>>(), SetUtil.superSets(new HashSet<int>()));
