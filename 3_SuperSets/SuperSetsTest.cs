@@ -94,7 +94,6 @@ namespace test
             setEquals(actual, expected);
         }
 
-        [Ignore]
         [TestMethod]
         public void superSetsOfEvenBiggerSet()
         {
@@ -116,7 +115,10 @@ namespace test
             expected.Add(setWithElements(2, 3, 4));
             expected.Add(setWithElements(1, 2, 3, 4));
 
-            //setEquals(expected, SetUtil.superSets(setWithElements(1, 2, 3, 4)));
+            var actual = new SuperSet<int>().AddSetWithElements(1, 2, 3, 4);
+
+            setEquals(actual, expected);
+
         }
 
         private HashSet<int> setWithElements(params int[] elements)
