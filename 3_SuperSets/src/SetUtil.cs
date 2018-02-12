@@ -15,7 +15,8 @@ namespace supersets
         {
             if (Object.ReferenceEquals(a, b)) { return true; }
             if (null == a || null == b) { return false; }
-            return a.Count == b.Count;
+            if (a.Count != b.Count) { return false; }
+            return a.All(setA => b.Any(setB => setA.SetEquals(setB)));
         }
 
         public override bool Equals(object obj)
